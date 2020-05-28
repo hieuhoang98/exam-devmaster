@@ -31,7 +31,12 @@
       overflow-x: hidden;
     }
 
-    .border-top::after {
+    .header {
+      position: relative;
+      z-index: 2;
+    }
+
+    .header::after {
       display: block;
       content: '';
       position: absolute;
@@ -42,10 +47,6 @@
       height: 9px;
       background: green;
       z-index: 1;
-    }
-
-    .image {
-      width: 100%;
     }
 
     .logo img {
@@ -78,7 +79,7 @@
     }
 
     @media only screen and (min-width: 1199px) {
-      .show{
+      .show {
         display: block;
       }
     }
@@ -162,15 +163,6 @@
       }
     }
 
-    .active-cyan-2 input[type=text]:focus:not([readonly]) {
-      border-bottom: 1px solid #4dd0e1;
-      box-shadow: 0 1px 0 0 #4dd0e1;
-    }
-
-    .active-cyan input[type=text] {
-      border-bottom: 1px solid #4dd0e1;
-      box-shadow: 0 1px 0 0 #4dd0e1;
-    }
 
     .set-img {
       width: 75%;
@@ -219,7 +211,7 @@
     }
 
     @media only screen and (max-width: 420px) {
-      .list-product{
+      .list-product {
         min-height: 70px;
       }
     }
@@ -241,11 +233,13 @@
       align-items: center;
       padding: 10px 0;
     }
+
     @media only screen and (max-width: 420px) {
-      .card-body{
+      .card-body {
         padding: 0;
       }
     }
+
     .text-box {
       margin: 0;
     }
@@ -465,7 +459,7 @@
 </head>
 
 <body>
-  <div class=" border-top">
+  <div class=" header">
     <header class="container box-header">
       <nav class="navbar navbar-expand-xl navbar-light bg-light my-nav py-0">
         <div class="logo">
@@ -543,10 +537,20 @@
         </div>
   </div>
   </nav>
-  </header>
 
-  <img src="../exam-devmaster/images/banner2.jpg" alt="" class="img-title">
-
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="../exam-devmaster/images/banner.jpg" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../exam-devmaster/images/SLIDE-1.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../exam-devmaster/images/SLIDE-2.jpg" alt="Third slide">
+      </div>
+    </div>
+  </div>
   <nav class="box-breadcrumb" aria-label="breadcrumb">
     <div class="container">
       <ol class="breadcrumb">
@@ -556,6 +560,9 @@
       </ol>
     </div>
   </nav>
+  </header>
+
+
 
   <main>
     <div class="container">
@@ -565,7 +572,7 @@
           <div class="row">
             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 padding">
               <div class="card mb-4">
-                <a href="#" class="inner-item">
+                <a href="detail-product.html" class="inner-item">
                   <img src="../exam-devmaster/images/KMnO4-(1).jpg" class="card-img-top" alt="">
                   <div class="card-body list-product">
                     <p class="text-box">POTASSIUM</p>
@@ -725,7 +732,8 @@
                   <div class="row no-gutters">
                     <div class="col-4 col-img">
                       <a href="#">
-                        <img class="img-title" src="../exam-devmaster/images/hoa-hoc-dang-sau-phao-hoa-cam-tay.jpg" alt="">
+                        <img class="img-title" src="../exam-devmaster/images/hoa-hoc-dang-sau-phao-hoa-cam-tay.jpg"
+                          alt="">
                       </a>
                     </div>
                     <div class="col-8 col-detail">
