@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <style>
+        .list-items-fist {
+            padding: 10px;
+            border-bottom: 1px solid #cbdcd3;
+            width: 100%;
+            background-color: #eaf6f0;
+            color: #333333;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .list-items-second {
+            padding: 10px;
+            width: 100%;
+            background-color: #eaf6f0;
+            color: #333333;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        main {
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header::after {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -30%);
+            width: 100%;
+            height: 9px;
+            background: green;
+            z-index: 1;
+        }
+
+        .logo img {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .logo img {
+                width: 80px;
+            }
+        }
+
+        .navbar-collapse {
+            align-items: stretch;
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .navbar-collapse {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transform: translate(0, 100%);
+                width: 270px;
+                background: #fff;
+                box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+                padding: 15px;
+                z-index: 99;
+            }
+        }
+
+        @media only screen and (min-width: 1199px) {
+            .show {
+                display: block;
+            }
+        }
+
+        .navbar-collapse .nav-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            padding-top: 8px;
+            transform: translate(-50%, 0);
+            text-align: center;
+        }
+
+        .logo:after {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -30%);
+            width: 209px;
+            height: 209px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .logo:after {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        .nav-column {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .box-items>.nav-item .nav-link {
+            font-size: 14px;
+            color: #3d3d3d;
+            font-weight: 700;
+        }
+
+        .box-items>.nav-item .nav-link:hover {
+            color: #099d4b;
+        }
+
+        @media only screen and (min-width: 1550px) {
+            .box-items>.nav-item .nav-link {
+                padding-right: 28px;
+            }
+        }
+
+        .box-items>.nav-item {
+            position: relative;
+        }
+
+        .box-items>.nav-item:hover .sub-menu {
+            display: block;
+        }
+
+        .box-language {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(30%, -50%);
+        }
+
+        @media only screen and (min-width: 1400px) {
+            .box-header {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                max-width: 75%;
+            }
+        }
+        .set-img {
+            width: 75%;
+            margin: auto;
+        }
+
+        .img-detail {
+            max-width: 350px;
+            border: 1px solid rgba(0,0,0,.125);;
+        }
+
+        .search-form .btn-dropdown:after {
+            display: none;
+        }
+
+        .search-form .dropdown-menu {
+            min-width: 280px;
+            padding: 0;
+            transform: translate(0, 25px);
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .search-form {
+                display: none;
+            }
+        }
+
+        .search-menu {
+            min-width: 250px;
+        }
+
+        .breadcrumb {
+            background-color: white;
+        }
+
+        .box-breadcrumb .breadcrumb-item a {
+            text-decoration: none;
+            color: #3d3d3d;
+        }
+
+        .box-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: ">";
+        }
+
+        .list-product {
+            text-align: center;
+            font-weight: 700;
+            border-top: 1px solid #ccdad2;
+            background: #ebf9f2;
+            min-height: 50px;
+        }
+
+        @media only screen and (max-width: 420px) {
+            .list-product {
+                min-height: 70px;
+            }
+        }
+
+        .card .inner-item {
+            display: block;
+            text-align: center;
+            color: #06833e;
+            text-decoration: none;
+        }
+
+        .padding {
+            padding: 12px 8px 12px 8px;
+        }
+
+        .card-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        @media only screen and (max-width: 420px) {
+            .card-body {
+                padding: 0;
+            }
+        }
+
+        .card{
+            border: none;
+        }
+
+        .text-box {
+            margin: 0;
+        }
+
+        .text-box:hover {
+            color: #FFC107;
+        }
+
+        .text-title {
+            position: relative;
+            font-size: 16px;
+            font-weight: bold;
+            padding-bottom: 5px;
+            margin: 0 0 10px;
+        }
+
+        .text-title:before {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: #ebf9f2;
+            z-index: 1;
+        }
+
+        .text-title:after {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #0e9c4e;
+            z-index: 1;
+        }
+
+        .box-product:after {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -10px;
+            transform: translate(-50%, -30%);
+            width: 745px;
+            height: 1px;
+            background: #ebf9f2;
+            z-index: 1;
+        }
+
+        .title-box {
+            height: 40px;
+            padding: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            padding-top: 8px;
+            color: #FFF;
+            background-color: #0e9c4e;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .list-module li a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .list-module li a span:last-child:hover {
+            color: #0e9c4e;
+        }
+
+        .list-module li a span:first-child {
+            color: #0e9c4e;
+        }
+
+        .list-module li a span:last-child {
+            padding-left: 10px;
+        }
+
+        .list-module {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .hot-new {
+            display: flex;
+        }
+
+        .img-title {
+            width: 100%;
+        }
+
+        .col-8.col-detail {
+            padding-left: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #333333;
+        }
+
+        .col-detail a:hover {
+            color: #0e9c4e;
+        }
+
+        .set-footer {
+            font-size: 14px;
+        }
+
+        .after-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 15px;
+            border-top: 1px solid #dddddd;
+        }
+
+        .after-footer ul {
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .after-footer ul li {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .after-footer img {
+            max-width: 100%;
+        }
+
+        .detail-footer {
+            margin-top: 10px;
+            background-image: url("../exam-devmaster/images/bg-footer.jpg");
+            min-height: 300px;
+        }
+
+        .end-footer {
+            text-align: center;
+            background-color: #005527;
+            color: #d8d8d8;
+        }
+
+        .title-address {
+            color: #ffffff;
+            font-weight: 700;
+            padding-top: 30px;
+        }
+
+        .address-footer a {
+            text-decoration: none;
+        }
+
+        .address-footer a:hover {
+            color: #ffffff;
+        }
+
+        .Category-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .Category-footer ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .Category-footer ul li a:hover {
+            color: #f5951c;
+        }
+
+        .Category-footer ul li a span {
+            margin-left: 5px;
+        }
+
+        .detail-address {
+            color: #ffffff;
+        }
+
+        .list-social ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5px 0;
+        }
+
+        .list-social ul li a {
+            color: #ffffff;
+        }
+
+        .list-social ul li {
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-top: 10px;
+            width: 35px;
+            height: 35px;
+        }
+
+        .list-social ul li a {
+            position: absolute;
+            transform: translate(9px, 5px);
+        }
+
+        .list-social ul li a:hover {
+            color: #f5951c;
+        }
+
+        .subcribe-form-footer .input-group-append {
+            border-left: 1px solid #ddd;
+        }
+
+        .detail {
+            padding-top: 5px;
+        }
+
+        .name-product {
+            font-size: 18px;
+            color: #06833e;
+            font-weight: 700;
+        }
+
+        .set-deproduct{
+            padding-left: 40px;
+        }
+        @media only screen and (max-width: 1200px) {
+            .set-deproduct{
+                margin-bottom: 10px;
+            }
+        }
+        
+        .modal-header {
+            position: relative;
+            justify-content: center;
+        }
+
+        .modal-header .modal-title {
+            font-size: 26px;       
+        }
+
+        .modal-header .close {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+        }
+
+        .modal-body .set-titlepr{
+            text-align: center;
+        }
+
+        .modal-footer .btn {
+            background: #06833e;
+            color: #fff;
+            padding: 5px 10px; 
+        }
+    </style>
+    <title>AXIT CROMIC (CRO3) THỔ NHĨ KỲ</title>
+</head>
+
+<body>
+    <div class=" header">
+        <header class="container box-header">
+            <nav class="navbar navbar-expand-xl navbar-light bg-light my-nav py-0">
+                <div class="logo">
+                    <img src="../exam-devmaster/images/logo.png" alt="">
+                </div>
+
+                <div class="box-language">
+                    <img src="../exam-devmaster/images/vn.jpg" alt="">
+                    <img src="../exam-devmaster/images/en.jpg" alt="">
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="col-12 col-lg-6 col-xl-5 navbar-nav box-items">
+                        <div class="d-block d-xl-none">MENU</div>
+                        <li class="nav-item d-block d-xl-none">
+                            <div class="input-group search-menu">
+                                <input type="text" class="form-control" placeholder="search" aria-label="search"
+                                    aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="TRANG CHỦ">TRANG CHỦ </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="GIỚI THIỆU">GIỚI THIỆU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="SẢN PHẨM">SẢN PHẨM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="DỊCH VỤ">DỊCH VỤ</a>
+                        </li>
+                    </ul>
+
+                    <ul class="col-12 col-lg-6 col-xl-5 offset-xl-1 navbar-nav box-items nav-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="TIN TỨC">TIN TỨC </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="TUYỂN DỤNG">TUYỂN DỤNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-placement="bottom" title="LIÊN HỆ">LIÊN HỆ</a>
+                        </li>
+                    </ul>
+                    <div class="search-form">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle btn-dropdown" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="search" aria-label="search"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </nav>
+    <div>
+        <img src="../exam-devmaster/images/banner-1.jpg" alt="" class="img-title">
+    </div>
+    <nav class="box-breadcrumb" aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Sản phẩm</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Hóa chất</li>
+            </ol>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 order-md-2 col-md-8 col-lg-8 col-xl-9">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-5">
+                            <div class="card mb-4">
+                                <div>
+                                    <img src="../exam-devmaster/images/Cromic-Tho-(4).jpg" alt="" class="img-detail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-xl-7 set-deproduct">
+                            <h1 class="name-product">AXIT CROMIC (CRO3) THỔ NHĨ KÌ </h1>
+                            <div></div>
+                            <div>
+                                <ul>
+                                    <li><strong>Tên hóa học:</strong>Chromium trioxide, axit cromic</li>
+                                    <li><strong>Công thức:</strong> CrO3</li>
+                                    <li><strong>Hàm lượng:</strong> </li>
+                                    <li><strong>Xuất xứ:</strong> Thổ Nhĩ Kì </li>
+                                    <li><strong>Quy cách:</strong> 50kg/Thùng</li>
+                                    <li><strong>Giá bán liên hệ:</strong> 0918 764 332</li>
+                                </ul>
+                            </div>
+
+                            <div>           
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="far fa-envelope"></i>  Liên Hệ Đặt Hàng
+                                </button>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title" id="exampleModalLongTitle">LIÊN HỆ ĐẶT HÀNG</h1>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-xl-6">
+                                                        <div class="form-group">
+                                                            <div class="set-titlepr"><strong>Họ tên*</strong></div>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-xl-6">
+                                                        <div class="form-group">
+                                                            <div class="set-titlepr"><strong>Điện thoại*</strong></div>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-xl-6">
+                                                        <div class="form-group">
+                                                            <div class="set-titlepr"><strong>Email*</strong></div>
+                                                            <input type="email" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-xl-6">
+                                                        <div class="form-group">
+                                                            <div class="set-titlepr"><strong>Địa chỉ*</strong></div>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                        <div class="set-titlepr"><strong>Tên sản phẩm*</strong></div>
+                                                        <div><input class="form-control" name="contacttitle" value="AXIT CROMIC (CRO3) THỔ NHĨ KÌ " readonly=""></div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="set-titlepr"><strong>Ghi chú*</strong></div>
+                                                            <textarea class="form-control" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">GỬI ĐI</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-title">THÔNG TIN CHI TIẾT</div>
+                        <div class="detail">
+                            <p><strong>Ứng dụng:</strong> Axit cromic được sử dụng chủ yếu trong ngành xi mạ.Làm nguyên liệu cho dệt nhuộm.Nguyên liệu để làm xúc tác và oxi hoá trong ngành tổng hợp hữu cơ</p>
+                        </div>
+                        <div class="text-title">SẢN PHẨM CÙNG LOẠI</div>
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 padding">
+                                <div class="card mb-4">
+                                  <a href="POTASSIUM NITRATE (KNO3).html" class="inner-item">
+                                    <img src="../exam-devmaster/images/1d168cea687b8d25d46a.jpg" class="card-img-top set-img" alt="">
+                                    <div class="card-body list-product">
+                                      <p class="text-box">POTASSIUM NITRATE </p>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 padding">
+                                <div class="card mb-4">
+                                  <a href="CHROMIC ACID (CRO3).html" class="inner-item">
+                                    <img src="../exam-devmaster/images/hoa-chat.jpg" class="card-img-top" alt="">
+                                    <div class="card-body list-product">
+                                      <p class="text-box">Chromic Acid (CrO3) </p>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 padding">
+                                <div class="card mb-4">
+                                  <a href="BORIC ACID (H3BO3).html" class="inner-item">
+                                    <img src="../exam-devmaster/images/8001e30c1b57ff09a646.jpg" class="card-img-top" alt="">
+                                    <div class="card-body list-product">
+                                      <p class="text-box">BORIC ACID (H3BO3) </p>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 order-md-1 col-md-4 col-lg-4 col-xl-3">
+                    <div>
+                        <ul class="list-module">
+                            <li class="title-box">SẢN PHẨM</li>
+                            <li class="list-items-fist">
+                                <a href="index.html">
+                                    <span> <i class="fas fa-chevron-circle-right"></i> </span>
+                                    <span> Hóa chất </span>
+                                </a>
+                            </li>
+                            <li class=" list-items-second">
+                                <a href="#">
+                                    <span> <i class="fas fa-chevron-circle-right"></i> </span>
+                                    <span> Phân bón </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <ul class="list-module">
+                            <li class="title-box">TIN TỨC MỚI NHẤT</li>
+                            <li class="list-items-fist">
+                                <div class="hot-new">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-img">
+                                            <a href="#"><img class="img-title" src="../exam-devmaster/images/nw4.jpg"
+                                                    alt=""> </a>
+                                        </div>
+                                        <div class="col-8 col-detail">
+                                            <a href="#">Chế phẩm hóa học là gì? Và những điều cần lưu ý khi sử dụng </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-items-fist">
+                                <div class="hot-new">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-img">
+                                            <a href="#">
+                                                <img class="img-title"
+                                                    src="../exam-devmaster/images/hoa-hoc-dang-sau-phao-hoa-cam-tay.jpg"
+                                                    alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-8 col-detail">
+                                            <a href="#">Hóa học đằng sau pháo hoa cầm tay </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-items-fist">
+                                <div class="hot-new">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-img">
+                                            <a href="#"><img class="img-title" src="../exam-devmaster/images/nw3.jpg"
+                                                    alt=""> </a>
+                                        </div>
+                                        <div class="col-8 col-detail">
+                                            <a href="#">Ứng dụng của xút trong công nghiệp - xút chuẩn hàng tốt </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-items-fist">
+                                <div class="hot-new">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-img">
+                                            <a href="#"><img class="img-title" src="../exam-devmaster/images/nw2.jpg"
+                                                    alt=""> </a>
+                                        </div>
+                                        <div class="col-8 col-detail">
+                                            <a href="#">Những lợi ích và mối nguy hiểm khi sử dụng hóa chất XÚT (NaOH)
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class=" list-items-second">
+                                <div class="hot-new">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-img">
+                                            <a href="#"><img class="img-title" src="../exam-devmaster/images/nw1.jpg"
+                                                    alt=""> </a>
+                                        </div>
+                                        <div class="col-8 col-detail">
+                                            <a href="#">Cung Cấp Hóa chất Sodium hydroxide 99% – Xút Vảy Trung Quốc </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer class="set-footer">
+        <div class="after-footer">
+            <div class="container">
+                <ul class="row">
+                    <li class="col-4 col-sm-2"><img src="../exam-devmaster/images/dt-1.png" alt=""></li>
+                    <li class="col-4 col-sm-2"><img class="img-footer" src="../exam-devmaster/images/dt-2.png" alt="">
+                    </li>
+                    <li class="col-4 col-sm-2"><img class="img-footer" src="../exam-devmaster/images/dt-3.png" alt="">
+                    </li>
+                    <li class="col-4 col-sm-2"><img class="img-footer" src="../exam-devmaster/images/dt-4.png" alt="">
+                    </li>
+                    <li class="col-4 col-sm-2"><img class="img-footer" src="../exam-devmaster/images/dt-5.png" alt="">
+                    </li>
+                    <li class="col-4 col-sm-2"><img class="img-footer" src="../exam-devmaster/images/dt-6.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="detail-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="address-footer">
+                            <div class="title-address">CÔNG TY CỔ PHẦN GEMACHEM VIỆT NAM</div>
+                            <div class="detail-address"> <strong>Trụ sở</strong> : Số 203 Ngô Gia Tự, Phường Đức Giang,
+                                Quận Long
+                                Biên,Hà Nội, Việt Nam </div>
+                            <div class="detail-address"> <strong>VPGD</strong> : Số 46 Ngô Quyền, Phường Hàng Bài, Quận
+                                Hoàn Kiếm, Hà
+                                Nội, Việt Nam </div>
+                            <div class="detail-address"> <strong>Điện thoại</strong><a href="#">(024) 3923 3254</a> -
+                                <strong>Fax</strong>: (024) 3938 7667 </div>
+                            <div class="detail-address"> <strong>Di động:</strong><a href="#">0918 764 332</a> </div>
+                            <div class="detail-address"> <strong>Email</strong> : <a
+                                    href="#">contact@gemachem.com.vn</a> - Website:
+                                <a href="#">gemachem.com.vn</a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-2">
+                        <div class="Category-footer">
+                            <div class="title-address">DANH MỤC</div>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div> <i class="fas fa-angle-right"></i> </div>
+                                        <span>Sản phẩm</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div> <i class="fas fa-angle-right"></i> </div>
+                                        <span>Dịch vụ</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div> <i class="fas fa-angle-right"></i> </div>
+                                        <span>Tin tức</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div> <i class="fas fa-angle-right"></i> </div>
+                                        <span>Liên hệ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-lg-4">
+                        <p class="title-address">ĐĂNG KÝ NHẬN TIN</p>
+                        <div class="input-group subcribe-form-footer">
+                            <input type="email" name="email" class="form-control" placeholder="Email"
+                                aria-label="Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-light">
+                                    <img src="../exam-devmaster/images/fly.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-social">
+                            <ul class="row">
+                                <li>
+                                    <a href="#" title=""><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" title=""><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" title=""><i class="fab fa-google-plus-g"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" title=""><i class="fab fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" title=""><i class="fab fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="end-footer">Copyright © 2019 Bản quyền thuộc Gemachem Việt Nam</div>
+    </footer>
+
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+
+</html>
