@@ -464,18 +464,39 @@
 
     .box-animation{
       position: relative;
-      animation:  mymove  25s linear infinite;
+      animation:  mymove 5s linear infinite;
       animation-timing-function: linear;
       width: 200%;
-
+    }
+    @media only screen and (max-width: 767px) {
+      .box-animation{
+        animation:  mymove2 5s linear infinite;
+        animation-timing-function: linear;
+        width: 300%;
+      }
     }
     .box-animation ul {
+      display: inline-flex;
+      align-items: center;
       white-space: nowrap;
     }
     .box-animation ul li {
-      display: inline-block;
-      vertical-align: middle;
       padding: 0 35px;
+    }
+    @media only screen and (max-width: 1199px) {
+      .box-animation ul li {
+        padding: 0 25px;
+      }
+    }
+    @media only screen and (max-width: 991px) {
+      .box-animation ul li {
+        padding: 0 15px;
+      }
+    }
+    @media only screen and (max-width: 575px) {
+      .box-animation ul li {
+        padding: 0 2.5vw;
+      }
     }
     @keyframes mymove {
       from {
@@ -483,7 +504,16 @@
       }
 
       to {
-        left:-100%;
+        left: -100%;
+      }
+    }
+    @keyframes mymove2 {
+      from {
+        left: 0;
+      }
+
+      to {
+        left: -150%;
       }
     }
   </style>
